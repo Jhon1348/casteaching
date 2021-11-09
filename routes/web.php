@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\VideosController;
 use App\Models\Video;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,20 +11,7 @@ Route::get('/', function () {
 
 Route::get('/videos/{id}', [VideosController::class, 'show']);
 
-
-//Route::get('/videos/1', function () {
-////    return 'Ubuntu 101 | Here description | December 13';
-//    $video = Video::find(1);
-////    dd($video->title);
-////    $video = new stdClass();
-////    $video->title = 'Ubuntu 101';
-////    $video->description = 'Here description';
-////    $video->published_at ='December 13';
-//    return view('videos.show',[
-//        'video' =>$video
-//    ]); //CRED -> RETRIEVE -> nomes un video
-//});
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+

@@ -4,21 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Tests\Feature\Videos\VideoTest;
 
 class VideosController extends Controller
 {
-    //
+    public function testBy()
+    {
+        return VideoTest::class;
+    }
+
     public function show($id)
     {
-//        return 'Ubuntu 101 | Here description | December 13';
-//    dd($video->title);
-//    $video = new stdClass();
-//    $video->title = 'Ubuntu 101';
-//    $video->description = 'Here description';
-//    $video->published_at ='December 13';
-
         return view('videos.show',[
-            'video' =>Video::find($id)
+            'video' =>Video::findOrFail($id)
         ]); //CRED -> RETRIEVE -> nomes un video
     }
 }
