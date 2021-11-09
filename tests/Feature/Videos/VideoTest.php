@@ -38,7 +38,7 @@ class VideoTest extends TestCase
         ]);
         //FASE 2 -> execució
 
-        $response = $this->get('/videos/' . $video2->id);
+        $response = $this->get('/videos/' . $video2 ->id);
 
         $response->assertStatus(200);
         $response->assertSee('Ubuntu 101');
