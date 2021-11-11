@@ -20,7 +20,7 @@ if(! function_exists('create_default_user')){
                 'personal_team'=>true
             ]);
         }catch (\Exception $exception){
-            
+
         }
     }
 }
