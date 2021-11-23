@@ -1,17 +1,11 @@
 <?php
 
-namespace Tests\Feature\Videos;
+namespace Tests\Unit;
 
 use App\Models\Video;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-
-/**
- * @Covers \App\Http\Controllers\VideosController
- */
-
 
 class VideoTest extends TestCase
 {
@@ -19,9 +13,9 @@ class VideoTest extends TestCase
     /**
      * @test
      */
-    public function users_can_view_videos()
+    public function can_get_formatted_published_at_date()
     {
-        //FASE 1 -> preparació
+        //1 preparació
         $video= Video::create([
             'title' => 'Ubuntu 101',
             'description' => '# Here description',
@@ -32,33 +26,30 @@ class VideoTest extends TestCase
             'series_id' => 1
         ]);
 
-        $video2= Video::create([
+        //2 Execució
+        $dateToTest= $video->formatted_published_at;
+
+        //3 comprovació
+        $this->assertEquals($dateToTest, '13 de desembre de 2020');
+    }
+
+    public function can_get_formatted_published_at_date_when_not_published()
+    {
+        //1 preparació
+        $video= Video::create([
             'title' => 'Ubuntu 101',
             'description' => '# Here description',
             'url' => 'https://youtu.be/w8j07_DBl_I',
-            'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
+            'published_at' => null,
             'previous' => null,
             'next' => null,
             'series_id' => 1
         ]);
-        //FASE 2 -> execució
 
-        $response = $this->get('/videos/' . $video2->id);
+        //2 Execució
+        $dateToTest= $video->formatted_published_at;
 
-        $response->assertStatus(200);
-        $response->assertSee('Ubuntu 101');
-        $response->assertSee('Here description');
-        $response->assertSee('13 de desembre de 2020');
-        //FASE 3 -> assertions
-    }
-
-    /**
-     * @test
-     */
-    public function users_cannot_view_not_existing_videos()
-    {
-        $response = $this->get('/videos/999');
-        $response->assertStatus(404);
-
+        //3 comprovació
+        $this->assertEquals($dateToTest, '');
     }
 }
