@@ -1281,9 +1281,6 @@ select {
 .col-span-6 {
 	grid-column: span 6 / span 6;
 }
-.m-5 {
-	margin: 1.25rem;
-}
 .m-4 {
 	margin: 1rem;
 }
@@ -1477,9 +1474,6 @@ select {
 .max-w-6xl {
 	max-width: 72rem;
 }
-.max-w-2xl {
-	max-width: 42rem;
-}
 .flex-1 {
 	flex: 1 1 0%;
 }
@@ -1578,16 +1572,6 @@ select {
 	--tw-space-y-reverse: 0;
 	margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
 	margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
-}
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
-	--tw-space-x-reverse: 0;
-	margin-right: calc(1rem * var(--tw-space-x-reverse));
-	margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
-	--tw-space-y-reverse: 0;
-	margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-	margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 .overflow-hidden {
 	overflow: hidden;
@@ -1733,10 +1717,6 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
 }
-.bg-black {
-	--tw-bg-opacity: 1;
-	background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
-}
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
 }
@@ -1758,9 +1738,6 @@ select {
 }
 .p-6 {
 	padding: 1.5rem;
-}
-.p-3 {
-	padding: 0.75rem;
 }
 .px-4 {
 	padding-left: 1rem;
@@ -1919,9 +1896,6 @@ select {
 }
 .tracking-wider {
 	letter-spacing: 0.05em;
-}
-.tracking-tighter {
-	letter-spacing: -0.05em;
 }
 .tracking-tight {
 	letter-spacing: -0.025em;
@@ -3133,18 +3107,6 @@ select {
 		grid-column: span 4 / span 4;
 	}
 
-	.lg\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-x-reverse: 0;
-		margin-right: calc(1rem * var(--tw-space-x-reverse));
-		margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-	}
-
-	.lg\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-y-reverse: 0;
-		margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-		margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-	}
-
 	.lg\:p-5 {
 		padding: 1.25rem;
 	}
@@ -3155,18 +3117,6 @@ select {
 	}
 }
 @media (min-width: 1280px) {
-
-	.xl\:space-x-10 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-x-reverse: 0;
-		margin-right: calc(2.5rem * var(--tw-space-x-reverse));
-		margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
-	}
-
-	.xl\:space-y-5 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-y-reverse: 0;
-		margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
-		margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
-	}
 
 	.xl\:px-10 {
 		padding-left: 2.5rem;
@@ -3416,18 +3366,6 @@ select {
 
 	.\32xl\:prose-2xl > :last-child {
 		margin-bottom: 0;
-	}
-
-	.\32xl\:space-x-20 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-x-reverse: 0;
-		margin-right: calc(5rem * var(--tw-space-x-reverse));
-		margin-left: calc(5rem * calc(1 - var(--tw-space-x-reverse)));
-	}
-
-	.\32xl\:space-y-10 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-y-reverse: 0;
-		margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
-		margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
 	}
 
 	.\32xl\:px-20 {
