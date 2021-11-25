@@ -113,3 +113,24 @@ if(! function_exists('create_permissions')) {
         Permission::firstOrCreate(['name' => 'videos_manage_index']);
     }
 }
+
+if(! function_exists('create_sample_videos')) {
+    function create_sample_videos (){
+        $video1 = Video::create([
+           'title' => 'Video 1',
+           'description' => 'algooooo',
+           'url' => 'https://youtu.be/esX7SFtEjHg'
+        ]);
+        $video2 = Video::create([
+            'title' => 'Video 2',
+            'description' => 'algooooo',
+            'url' => 'https://youtu.be/5Q2Pc-e-8Qc'
+        ]);
+        $video3 = Video::create([
+            'title' => 'Video 3',
+            'description' => 'algooooo',
+            'url' => 'https://youtu.be/R9AHAqu_bis'
+        ]);
+        return [$video1,$video2,$video3];
+    }
+}

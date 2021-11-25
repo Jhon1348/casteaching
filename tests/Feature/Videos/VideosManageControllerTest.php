@@ -2,12 +2,15 @@
 
 namespace Tests\Feature\Videos;
 
-use App\Models\User;
+use App\Models\Video;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Permission;
 use Tests\TestCase;
+
+/**
+ * @covers \App\Http\Controllers\VideosManageController
+ */
 
 class VideosManageControllerTest extends TestCase
 {
@@ -20,11 +23,25 @@ class VideosManageControllerTest extends TestCase
         //1
         $this->loginAsVideoManager();
 
+        $videos =create_sample_videos();
+
         //2 executar
         $response = $this->get('/manage/videos');
 
         //3 provar
         $response->assertStatus(200);
+        $response->assertViewIS('videos.manage.index');
+        $response->assertViewHas('videos', function ($v)use ($videos){
+            return $v->count() === count($videos) && get_class($v)
+                ===Collection::class && get_class($videos[0]) ===Video::class;
+        });
+
+        foreach ($videos as $video) {
+            $response ->assertSee($video ->id);
+            $response ->assertSee($video ->title);
+//            $response ->assertSee($video ->title);
+        }
+
     }
 
     /**
