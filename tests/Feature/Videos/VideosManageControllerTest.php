@@ -18,6 +18,45 @@ use Tests\TestCase;
 class VideosManageControllerTest extends TestCase
 {
     use RefreshDatabase;
+
+    /**
+     * @test
+     */
+    public function user_with_permissions_can_destroy_videos()
+    {
+        //fase 1
+        $this->loginAsVideoManager();
+        $video = Video::create([
+            'title' => 'Nou video',
+            'description' => 'Reacció serie',
+            'url' => 'https://youtu.be/3VS973ZUys8'
+        ]);
+
+            //crear un video
+        $response = $this->delete('/manage/videos/'. $video->id);
+
+        $response->assertRedirect(route('manage.videos'));
+        $response->assertSessionHas('status','Successfully removed');
+        $this->assertNull(Video::find($video->id));
+        $this->assertNull($video->fresh());
+    }
+    /**
+     * @test
+     */
+    public function user_without_permissions_cannot_destroy_videos()
+    {
+        $this->loginAsRegularUser();
+        $video = Video::create([
+            'title' => 'Nou video',
+            'description' => 'Reacció serie',
+            'url' => 'https://youtu.be/3VS973ZUys8'
+        ]);
+
+        $response = $this->delete('/manage/videos/'. $video->id);
+
+        $response->assertStatus(403);
+    }
+
     /**
      * @test
      */

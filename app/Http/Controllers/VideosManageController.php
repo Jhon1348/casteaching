@@ -23,14 +23,6 @@ class VideosManageController extends Controller
     }
 
     /**
-     * Create mostra el formulari de creació
-     */
-//    public function create()
-//    {
-//        //
-//    }
-
-    /**
      * Guarda a la base de dades el nou video
      */
     public function store(Request $request)
@@ -75,6 +67,8 @@ class VideosManageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Video::find($id)->delete();
+        session()->flash('status','Successfully removed');
+        return redirect()->route('manage.videos');
     }
 }
