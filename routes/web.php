@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsersManageController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\VideosManageController;
 use App\Models\Video;
@@ -22,6 +23,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::post('/manage/videos', [VideosManageController::class, 'store']);
     Route::delete('/manage/videos/{id}', [VideosManageController::class, 'destroy'])->middleware(['can:videos_manage_destroy']);
-    Route::get('/manage/users', [ \App\Http\Controllers\UsersManageController::class,'index'])->middleware(['can:users_manage_index'])
+
+    Route::get('/manage/users', [ UsersManageController::class,'index'])->middleware(['can:users_manage_index'])
         ->name('manage.users');
+    Route::post('/manage/users',[ UsersManageController::class,'store' ])->middleware(['can:users_manage_store']);
+    Route::delete('/manage/users/{id}',[ UsersManageController::class,'destroy' ])->middleware(['can:users_manage_destroy']);
 });
