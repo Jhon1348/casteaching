@@ -132,8 +132,8 @@
                                     {{ $user->superadmin }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="/users/{{$user->id}}" target="_blank" class="text-indigo-600 hover:text-indigo-900">Show</a>
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    <a href="/manage/users/{{$user->id}}" target="_blank" class="text-indigo-600 hover:text-indigo-900">Show</a>
+                                    <a href="/manage/users/{{$user->id}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                 <form class="inline" action="/manage/users/{{$user->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
