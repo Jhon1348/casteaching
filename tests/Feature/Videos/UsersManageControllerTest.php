@@ -17,6 +17,66 @@ class UsersManageControllerTest extends TestCase
 {
     use RefreshDatabase;
 
+    /**
+     * @test
+     */
+    public function user_with_permissions_can_update_videos()
+    {
+//        $this->withoutExceptionHandling();
+        $this->loginAsUserManager();
+        $user = User::create([
+            'name' => 'Pepe',
+            'email' => 'pepe@prova.com',
+            'password' => Hash::make('12345678')
+        ]);
+
+        $response = $this->put('/manage/users/'. $user->id,[
+            'name' => 'acacha',
+            'email' => 'acacha@casteaching.com',
+            'password' => Hash::make('12345678')
+        ]);
+
+        $response->assertRedirect(route('manage.users'));
+//        $response->assertViewIS('videos.manage.index');
+        $response->assertSessionHas('status','Successfully updated');
+
+        $newUser =User::find($user->id);
+        $this->assertEquals('acacha',$newUser->name);
+        $this->assertEquals('acacha@casteaching.com',$newUser->email);
+        $this->assertEquals(Hash::make('12345678'),$newUser->password);
+        $this->assertEquals($user->id, $newUser->id);
+
+    }
+
+    /**
+     * @test
+     */
+    public function user_with_permissions_can_see_edit_users()
+    {
+//        $this->withoutExceptionHandling();
+        $this->loginAsUserManager();
+        $user = User::create([
+            'name' => 'Pepe',
+            'email' => 'pepe@prova.com',
+            'password' => Hash::make('12345678')
+        ]);
+
+        $response = $this->get('/manage/users/'. $user->id);
+
+        $response->assertStatus(200);
+        $response->assertViewIs('users.manage.edit');
+        $response->assertViewHas('user', function ($u) use ($user){
+//            dd($u->is($user));
+            return $u->is($user);
+        });
+
+        $response->assertSee('<form data-qa="form_user_edit"',false);
+
+        $response->assertSee($user->name);
+        $response->assertSee($user->email);
+//        $response->assertSee($user->password);
+    }
+
     /** @test  */
     public function user_with_permissions_can_destroy_users() {
         $this->loginAsUserManager();
