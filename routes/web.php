@@ -23,6 +23,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::post('/manage/videos', [VideosManageController::class, 'store']);
     Route::delete('/manage/videos/{id}', [VideosManageController::class, 'destroy'])->middleware(['can:videos_manage_destroy']);
+    Route::get('/manage/videos/{id}', [VideosManageController::class, 'edit'])->middleware(['can:videos_manage_edit']);
+    Route::put('/manage/videos/{id}', [VideosManageController::class, 'update'])->middleware(['can:videos_manage_update']);
+
+
 
     Route::get('/manage/users', [ UsersManageController::class,'index'])->middleware(['can:users_manage_index'])
         ->name('manage.users');

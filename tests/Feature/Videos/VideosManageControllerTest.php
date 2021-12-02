@@ -22,6 +22,66 @@ class VideosManageControllerTest extends TestCase
     /**
      * @test
      */
+    public function user_with_permissions_can_update_videos()
+    {
+        $this->withoutExceptionHandling();
+        $this->loginAsVideoManager();
+        $video = Video::create([
+            'title' => 'Nou video',
+            'description' => 'Reacció serie',
+            'url' => 'https://youtu.be/3VS973ZUys8'
+        ]);
+
+        $response = $this->put('/manage/videos/'. $video->id,[
+            'title' => 'All Good Things',
+            'description' => 'Hold On',
+            'url' => 'https://youtu.be/I8ow3RbVEoQ'
+            ]);
+
+        $response->assertRedirect(route('manage.videos'));
+//        $response->assertViewIS('videos.manage.index');
+        $response->assertSessionHas('status','Successfully updated');
+
+        $newVideo =Video::find($video->id);
+        $this->assertEquals('All Good Things',$newVideo->title);
+        $this->assertEquals('Hold On',$newVideo->description);
+        $this->assertEquals('https://youtu.be/I8ow3RbVEoQ',$newVideo->url);
+        $this->assertEquals($video->id, $newVideo->id);
+
+    }
+
+    /**
+     * @test
+     */
+    public function user_with_permissions_can_see_edit_videos()
+    {
+        $this->loginAsVideoManager();
+        $video = Video::create([
+            'title' => 'Nou video',
+            'description' => 'Reacció serie',
+            'url' => 'https://youtu.be/3VS973ZUys8'
+        ]);
+
+        $response = $this->get('/manage/videos/'. $video->id);
+
+        $response->assertStatus(200);
+        $response->assertViewIS('videos.manage.edit');
+        $response->assertViewHas('video', function ($v) use ($video){
+
+            return $video->is($v);
+        });
+
+        $response->assertSee('<form data-qa="form_video_edit"',false);
+
+        $response->assertSeeText($video->title);
+        $response->assertSeeText($video->description);
+        $response->assertSee($video->url);
+
+    }
+
+    /**
+     * @test
+     */
     public function user_with_permissions_can_destroy_videos()
     {
         //fase 1

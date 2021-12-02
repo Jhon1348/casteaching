@@ -98,7 +98,7 @@
                     </div>
 
                     <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
+                        <thead class="bg-blue-200">
                         <tr>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Id
@@ -120,7 +120,11 @@
                         <tbody>
                         <!-- Odd row -->
                         @foreach($videos as $video)
-                            <tr class="bg-white">
+                            @if($loop->odd)
+                                <tr class="bg-white">
+                            @else
+                                <tr class="bg-gray-50">
+                            @endif
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                 {{$video ->id}}
                             </td>
@@ -135,8 +139,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <a href="/videos/{{$video->id}}" target="_blank" class="text-indigo-600 hover:text-indigo-900">Show</a>
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-
+                                <a href="/manage/videos/{{$video->id}}" target="_blank" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                 <form class="inline " action="/manage/videos/{{$video->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -147,26 +150,6 @@
                             </td>
                         </tr>
                         @endforeach
-                        <!-- Even row -->
-{{--                        <tr class="bg-gray-50">--}}
-{{--                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">--}}
-{{--                                Cody Fisher--}}
-{{--                            </td>--}}
-{{--                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">--}}
-{{--                                Product Directives Officer--}}
-{{--                            </td>--}}
-{{--                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">--}}
-{{--                                cody.fisher@example.com--}}
-{{--                            </td>--}}
-{{--                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">--}}
-{{--                                Owner--}}
-{{--                            </td>--}}
-{{--                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">--}}
-{{--                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-
-                        <!-- More people... -->
                         </tbody>
                     </table>
                 </div>
