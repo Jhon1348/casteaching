@@ -27,7 +27,7 @@ if(! function_exists('create_default_videos')){
         Video::create([
             'title' => 'Ubuntu 101',
             'description' => '# Here description',
-            'url' => 'https://youtu.be/w8j07_DBl_I',
+            'url' => 'https://www.youtube.com/embed/w8j07_DBl_I',
             'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
             'previous' => null,
             'next' => null,
@@ -132,19 +132,24 @@ if(! function_exists('create_sample_videos')) {
         $video1 = Video::create([
            'title' => 'Video 1',
            'description' => 'algooooo',
-           'url' => 'https://youtu.be/esX7SFtEjHg'
+           'url' => 'https://www.youtube.com/embed/esX7SFtEjHg'
         ]);
         $video2 = Video::create([
             'title' => 'Video 2',
             'description' => 'algooooo',
-            'url' => 'https://youtu.be/5Q2Pc-e-8Qc'
+            'url' => 'https://www.youtube.com/embed/5Q2Pc-e-8Qc'
         ]);
         $video3 = Video::create([
             'title' => 'Video 3',
             'description' => 'algooooo',
-            'url' => 'https://youtu.be/R9AHAqu_bis'
+            'url' => 'https://www.youtube.com/embed/R9AHAqu_bis'
         ]);
-        return [$video1,$video2,$video3];
+        $video4 = Video::create([
+            'title' => 'Hold on',
+            'description' => 'Here description',
+            'url' => 'https://www.youtube.com/embed/I8ow3RbVEoQ'
+        ]);
+        return [$video1,$video2,$video3,$video4];
     }
 }
 if (! function_exists('create_user_manager_user')) {
