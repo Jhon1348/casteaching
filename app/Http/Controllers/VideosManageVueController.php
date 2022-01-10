@@ -2,17 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Video;
 use Illuminate\Http\Request;
-use Tests\Feature\Videos\VideoApiTest;
 
-class VideosApiController extends Controller
+class VideosManageVueController extends Controller
 {
-    public static function testeBy()
-    {
-        return VideoApiTest::class;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +13,17 @@ class VideosApiController extends Controller
      */
     public function index()
     {
-        //abort(500);
-        return Video::all();
+        return view('videos.manage.vue.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -32,11 +34,7 @@ class VideosApiController extends Controller
      */
     public function store(Request $request)
     {
-       return  Video::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'url' => $request->url
-        ]);
+        //
     }
 
     /**
@@ -47,7 +45,18 @@ class VideosApiController extends Controller
      */
     public function show($id)
     {
-        return Video::findOrFail($id);
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -59,12 +68,7 @@ class VideosApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $video = Video::findOrFail($id);
-        $video->title = $request->title;
-        $video->description = $request->description;
-        $video->url = $request->url;
-        $video->save();
-        return $video;
+        //
     }
 
     /**
@@ -75,8 +79,6 @@ class VideosApiController extends Controller
      */
     public function destroy($id)
     {
-       $video= Video::findOrFail($id);
-       $video->delete();
-       return $video;
+        //
     }
 }

@@ -1,0 +1,14 @@
+{
+  "name": "@jhon/casteaching_jhon",
+  "version": "1.0.1",
+  "description": "Javascript package for casteaching API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jhon Moreno",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
