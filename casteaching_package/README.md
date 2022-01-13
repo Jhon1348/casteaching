@@ -1,7 +1,7 @@
 # Instal·lació
 
 ```bash 
-npm install @acacha/casteaching
+npm install @john_3/casteaching
 ``` 
 
 # Usage
