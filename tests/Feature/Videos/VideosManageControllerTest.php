@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Videos;
 
+use App\Events\VideoCreated;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Event;
 
 /**
  * @covers \App\Http\Controllers\VideosManageController
@@ -124,20 +126,17 @@ class VideosManageControllerTest extends TestCase
     {
 //        $this-> withoutExceptionHandling();
         $this->loginAsVideoManager();
-        $video = objectify ([
+        $video = objectify ($videoArray=[
             'title' => 'Nou video',
             'description' => 'Reacció serie',
             'url' => 'https://youtu.be/3VS973ZUys8'
         ]);
-//        dd($video->title);
-//        $video[]
-//        $video->
 
-        $response = $this->post('/manage/videos',[
-            'title' => 'Nou video',
-            'description' => 'Reacció serie',
-            'url' => 'https://youtu.be/3VS973ZUys8'
-        ]);
+        Event::fake();
+
+        $response = $this->post('/manage/videos',$videoArray);
+
+        Event::assertDispatched(VideoCreated::class);
 
         $response->assertRedirect(route('manage.videos'));
         $response->assertSessionHas('status','Successfully created');
