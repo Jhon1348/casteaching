@@ -7511,7 +7511,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var apiClient = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
-  baseURL: 'http://casteaching.test/api',
+  baseURL: "https://casteaching.test/api",
   withCredentials: true,
   headers: {
     Accept: 'application/json',
