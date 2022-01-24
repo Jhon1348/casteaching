@@ -2,7 +2,7 @@ import VideosList from "./components/VideosList";
 import VideoForm from "./components/VideoForm";
 import Status from "./components/Status";
 import Alpine from 'alpinejs';
-import casteaching from 'casteaching_jhon'
+import casteaching from '@acacha/casteaching'
 import Vue from 'vue'
 
 require('./bootstrap');
