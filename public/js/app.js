@@ -8170,7 +8170,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return window.casteaching('https://casteaching.test/api').videos();
+                return window.casteaching({
+                  baseUrl: 'https://casteaching.test/api'
+                }).videos();
 
               case 2:
                 _this2.videos = _context2.sent;
