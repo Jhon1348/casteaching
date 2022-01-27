@@ -88,7 +88,7 @@ export default
     },
     methods: {
         async getVideos() {
-            this.videos = await window.casteaching({baseUrl:'https://casteaching.test/api'}).videos()
+            this.videos = await window.casteaching({baseUrl:'https://casteaching.test/api'})
         },
         async refresh() {
             this.getVideos()
