@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
 
         create_permissions();
 
+        create_sample_series();
+
     }
 }
