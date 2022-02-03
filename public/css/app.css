@@ -1983,6 +1983,9 @@ select {
 .pb-20 {
 	padding-bottom: 5rem;
 }
+.pr-10 {
+	padding-right: 2.5rem;
+}
 .text-left {
 	text-align: left;
 }
