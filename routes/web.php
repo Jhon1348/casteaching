@@ -1,16 +1,15 @@
 <?php
 
+use App\Http\Controllers\GithubAuthController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\UsersManageController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\VideosManageController;
 use App\Http\Controllers\VideosManageVueController;
-use App\Models\Video;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LandingPageController::class, 'show']);
 
 Route::get('/videos/{id}', [VideosController::class, 'show']);
 
@@ -45,4 +44,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/vue/manage/videos/{id}',[ VideosManageVueController::class,'edit' ])->middleware(['can:videos_manage_edit']);
     Route::put('/vue/manage/videos/{id}',[ VideosManageVueController::class,'update' ])->middleware(['can:videos_manage_update']);
 });
+
+
+///
+Route::get('/auth/redirect', [GithubAuthController::class,'redirect']);
+
+Route::get('/auth/callback', [GithubAuthController::class,'callback']);
+
+
 

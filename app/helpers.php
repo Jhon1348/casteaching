@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Serie;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Video;
@@ -31,7 +32,7 @@ if(! function_exists('create_default_videos')){
             'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
             'previous' => null,
             'next' => null,
-            'series_id' => 1
+            'serie_id' => 1
         ]);
     }
 }
@@ -284,5 +285,39 @@ class DomainObject implements ArrayAccess, JsonSerializable
 if (! function_exists('objectify')) {
     function objectify($array){
         return new DomainObject($array);
+    }
+}
+
+if (! function_exists('create_sample_series')) {
+    function create_sample_series()
+    {
+        $serie1 = Serie::create([
+            'title' => 'TDD (Test Driven Development)',
+            'description' => 'Bla bla bla',
+            'image' => 'tdd.png',
+            'teacher_name' => 'Jhon Moreno',
+            'teacher_photo_url' => 'https://www.gravatar.com/avatar/' . md5('jmoreno1@iesebre.com')
+        ]);
+
+        sleep(1);
+        $serie2 = Serie::create([
+            'title' => 'Crud amb Vue i Laravel',
+            'description' => 'Bla bla bla',
+            'image' => 'crud_amb_vue_laravel.png',
+            'teacher_name' => 'Jhon Moreno',
+            'teacher_photo_url' => 'https://www.gravatar.com/avatar/' . md5('jmoreno1@iesebre.com')
+        ]);
+
+        sleep(1);
+
+        $serie3 = Serie::create([
+            'title' => 'ionic Real world',
+            'description' => 'Bla bla bla',
+            'image' => 'ionic_real_world.png',
+            'teacher_name' => 'Jhon Moreno',
+            'teacher_photo_url' => 'https://www.gravatar.com/avatar/' . md5('jmoreno1@iesebre.com')
+        ]);
+
+        return [$serie1,$serie2,$serie3];
     }
 }
