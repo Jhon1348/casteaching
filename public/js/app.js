@@ -8132,30 +8132,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      //         [
-      //             {
-      //                 "id": 1,
-      //                 "title": "Vídeo 1",
-      //                 "description": "Bla bla bla",
-      //                 "url": "https://youtu.be/a-3kfT9hZk4",
-      //                 "published_at": null
-      //             },
-      //     {
-      //         "id": 2,
-      //         "title": "Vídeo 2",
-      //         "description": "Bla bla bla",
-      //         "url": "https://youtu.be/a-3kfT9hZk4",
-      //         "published_at": null
-      //     },
-      //     {
-      //         "id": 3,
-      //         "title": "Vídeo 3",
-      //         "description": "Bla bla bla",
-      //         "url": "https://youtu.be/a-3kfT9hZk4",
-      //         "published_at": null,},
-      //     {}
-      //
-      // ]
       videos: []
     };
   },
@@ -8194,7 +8170,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return window.casteaching.videos();
+                return window.casteaching({
+                  baseUrl: 'https://casteaching.test/api'
+                });
 
               case 2:
                 _this2.videos = _context2.sent;
