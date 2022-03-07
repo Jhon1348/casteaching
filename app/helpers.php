@@ -12,8 +12,8 @@ use Spatie\Permission\Models\Permission;
 if(! function_exists('create_default_user')){
     function create_default_user(){
         $user= User::create([
-            'name' =>config('casteaching.default_user.name','Sergi Tur'),
-            'email' =>config('casteaching.default_user.email','sergiturbadenas@gmail.com'),
+            'name' =>config('casteaching.default_user.name','Jhon'),
+            'email' =>config('casteaching.default_user.email','jhon@gmail.com'),
             'password' => Hash::make(config('casteaching.default_user.password','12345678'))
         ]);
 
@@ -128,8 +128,8 @@ if(! function_exists('create_superadmin_user')) {
     function create_superadmin_user()
     {
         $user = User::create([
-           'name' => 'SuperAmin',
-            'email' => 'superadmin@casteaching.com',
+           'name' => 'Sergi tur',
+            'email' => 'sergiturbadenas@gmail.com',
             'password' => Hash::make('12345678')
         ]);
         $user->superadmin =true;
