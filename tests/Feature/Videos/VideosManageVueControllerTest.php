@@ -3,6 +3,7 @@
 namespace Tests\Feature\Videos;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\Feature\Traits\CanLogin;
 use Tests\TestCase;
 

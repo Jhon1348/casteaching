@@ -72,12 +72,10 @@ export default
     },
     data() {
         return {
-
             videos: []
         }
     },
     async created() {
-
         this.getVideos()
         bus.$on('created',() => {
             this.refresh()
@@ -88,7 +86,7 @@ export default
     },
     methods: {
         async getVideos() {
-            this.videos = await window.casteaching({baseUrl:'https://casteaching.test/api'})
+            this.videos = await window.casteaching.videos()
         },
         async refresh() {
             this.getVideos()
