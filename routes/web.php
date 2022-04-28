@@ -9,6 +9,7 @@ use App\Http\Controllers\VideosController;
 use App\Http\Controllers\VideosManageController;
 use App\Http\Controllers\VideosManageVueController;
 use Illuminate\Support\Facades\Route;
+use Kanuu\Laravel\Facades\Kanuu;
 use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', [LandingPageController::class, 'show']);
@@ -64,5 +65,7 @@ Route::get('/auth/redirect', [GithubAuthController::class,'redirect']);
 
 Route::get('/auth/callback', [GithubAuthController::class,'callback']);
 
-
+Kanuu::redirectRoute()
+    ->middleware('auth')
+    ->name('kanuu.redirect');
 
