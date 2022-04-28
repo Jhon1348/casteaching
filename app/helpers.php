@@ -186,7 +186,8 @@ if(! function_exists('create_sample_videos')) {
         $video2 = Video::create([
             'title' => 'Video 2',
             'description' => 'algooooo',
-            'url' => 'https://www.youtube.com/embed/5Q2Pc-e-8Qc'
+            'url' => 'https://www.youtube.com/embed/zyABmm6Dw64',
+            'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
         ]);
         $video3 = Video::create([
             'title' => 'Video 3',
@@ -196,7 +197,8 @@ if(! function_exists('create_sample_videos')) {
         $video4 = Video::create([
             'title' => 'Hold on',
             'description' => 'Here description',
-            'url' => 'https://www.youtube.com/embed/I8ow3RbVEoQ'
+            'url' => 'https://www.youtube.com/embed/I8ow3RbVEoQ',
+            'user_id' => 1
         ]);
         return [$video1,$video2,$video3,$video4];
     }
